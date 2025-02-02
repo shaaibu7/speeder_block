@@ -5,8 +5,10 @@ export function useTelegram() {
   const [tg, setTg] = useState<any>(null);
 
   useEffect(() => {
-    WebApp.ready(); 
-    setTg(WebApp);
+    if (typeof window !== "undefined") { 
+        WebApp.ready();
+        setTg(WebApp);
+    }
   }, []);
 
   return { tg };
